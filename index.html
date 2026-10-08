@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meet the Campus Leadership - ISUFST San Enrique Campus</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      background-image:
+        linear-gradient(rgba(6, 20, 50, 0.55), rgba(6, 20, 50, 0.7)),
+        url("images.png");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    /* ---------- TOP BRAND BANNER (from ISUFST welcome graphic, person removed) ---------- */
+    .brand-banner {
+      width: 100%;
+      background: #ffffff url("images.png") center top / cover no-repeat;
+      min-height: 120px;
+      border-bottom: 6px solid #cba135;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b3d91 0%, #123a8c 55%, #0a2a66 100%);
+      color: white;
+      text-align: center;
+      padding: 20px 10px 40px 10px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      position: relative;
+    }
+    header h1 {
+      margin: 0 0 6px 0;
+      font-size: 2.3em;
+      letter-spacing: 0.5px;
+    }
+    header p {
+      margin: 0;
+      font-size: 14px;
+      color: #f3d98b;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    /* gold ornamental divider between sections, reused from the campus banner art */
+    .gold-divider {
+      display: block;
+      max-width: 380px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 10px auto 0 auto;
+      padding: 25px 20px 35px 20px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 14px;
+      box-shadow:
+        0 10px 25px rgba(11,61,145,0.15),
+        0 2px 6px rgba(0,0,0,0.08);
+      border: 1px solid rgba(203,161,53,0.35);
+    }
+    section h2 {
+      text-align: center;
+      color: #0b3d91;
+      font-size: 1.5em;
+      letter-spacing: 0.5px;
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    /* University Level stays transparent so the campus gate photo shows through */
+    section.transparent {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(203,161,53,0.55);
+      backdrop-filter: blur(1px);
+    }
+    section.transparent h2 {
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+    section > p.note {
+      text-align: center;
+      font-size: 13px;
+      color: #8a6d1a;
+      margin: 4px 0 10px 0;
+      font-style: italic;
+    }
+    .officials-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 26px;
+      margin-top: 22px;
+    }
+
+    /* =========================================================
+       CARD
+       ========================================================= */
+    .card {
+      background: linear-gradient(160deg, #ffffff, #f3f4f6);
+      border-radius: 14px;
+      width: 230px;
+      text-align: center;
+      padding-bottom: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.10),
+        0 6px 12px rgba(11,61,145,0.14),
+        0 18px 30px rgba(0,0,0,0.18),
+        0 36px 60px rgba(0,0,0,0.14);
+      transform: perspective(900px) rotateX(2deg);
+    }
+    .card:hover {
+      transform: perspective(900px) rotateX(6deg) translateY(-10px) scale(1.035);
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.14),
+        0 10px 18px rgba(11,61,145,0.24),
+        0 26px 40px rgba(0,0,0,0.26),
+        0 46px 70px rgba(0,0,0,0.2);
+    }
+
+    /* =========================================================
+       PHOTO FRAME — realistic 3D dark-mahogany wood frame with a
+       beaded inner molding and a cream mat around the photo,
+       styled after a classic tabletop picture frame.
+       ========================================================= */
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      box-sizing: border-box;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+      padding: 16px;
+      /* smooth polished mahogany wood, no streaks/dashes — just a soft gradient bevel */
+      background: linear-gradient(150deg, #7a4322 0%, #5a2f19 45%, #33170c 100%);
+      box-shadow:
+        inset 0 0 0 2px #8a5a2c,
+        inset 0 3px 6px rgba(255,255,255,0.2),
+        inset 0 -6px 12px rgba(0,0,0,0.55),
+        0 10px 18px rgba(0,0,0,0.35);
+    }
+    /* thin smooth inner rim line, no dashes — just a clean highlight edge */
+    .photo-frame::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 7px 7px 0 0;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,231,180,0.5),
+        inset 0 0 0 2px rgba(0,0,0,0.3);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      border-radius: 2px;
+      z-index: 1;
+      /* cream mat + thin gold bead line ringing the photo, then the photo's own depth */
+      box-shadow:
+        0 0 0 7px #ece2c6,
+        0 0 0 8px #b5883f,
+        inset 0 0 14px rgba(0,0,0,0.28);
+    }
+    /* diagonal glass sheen across the photo, for a realistic glossy surface */
+    .photo-frame .sheen {
+      position: absolute;
+      inset: 16px;
+      background: linear-gradient(115deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 20%, transparent 45%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    /* diagonal navy ribbon across the lower-right corner, embossed with highlight + shade */
+    .photo-frame::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 50px;
+      right: -65px;
+      bottom: 18px;
+      background: linear-gradient(120deg, #123a8c 0%, #0b3d91 45%, #081f4f 100%);
+      transform: rotate(-32deg);
+      box-shadow:
+        0 8px 14px rgba(0,0,0,0.4),
+        inset 0 2px 2px rgba(255,255,255,0.25),
+        inset 0 -3px 5px rgba(0,0,0,0.35);
+      z-index: 4;
+    }
+    /* gold ribbon layered just under the navy one, embossed to match */
+    .gold-ribbon {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 15px;
+      right: -65px;
+      bottom: 9px;
+      background: linear-gradient(120deg, #fbe6ad 0%, #cba135 50%, #8f6a1a 100%);
+      transform: rotate(-32deg);
+      box-shadow:
+        0 5px 9px rgba(0,0,0,0.32),
+        inset 0 1px 1px rgba(255,255,255,0.7),
+        inset 0 -2px 3px rgba(70,50,5,0.5);
+      z-index: 4;
+    }
+
+    .card h3 {
+      margin: 14px 10px 4px 10px;
+      font-size: 16px;
+      color: #0b3d91;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    }
+    .card p {
+      margin: 0 10px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .section-gap {
+      height: 34px;
+    }
+
+    /* ---------- BOTTOM BRAND STRIP (campus buildings from the ISUFST graphic) ---------- */
+    .brand-footer-strip {
+      width: 100%;
+      margin-top: 90px;
+      background: #0b3d91 url("images/banner-bottom.png") center / cover no-repeat;
+      min-height: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 12px;
+      color: #fff;
+      background-color: #0a2a66;
+    }
+  
+    /* =========================================================
+       ACQUAINTANCE — button, room, and realistic 4K TV gallery
+       (added block; everything above is untouched)
+       ========================================================= */
+    .acq-open{margin-top:16px;padding:12px 30px;border:0;border-radius:999px;cursor:pointer;font:bold 15px Arial,sans-serif;letter-spacing:.6px;color:#3a2a05;background:linear-gradient(135deg,#fbe6ad,#cba135 55%,#a97e1f);box-shadow:0 6px 16px rgba(0,0,0,.35),inset 0 1px 1px rgba(255,255,255,.7);text-shadow:none;transition:transform .25s,box-shadow .25s}
+    .acq-open:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.4),inset 0 1px 1px rgba(255,255,255,.7)}
+    /* button sits on the right INSIDE the blue header, vertically centered so it never touches the top/bottom border */
+    header .acq-open{position:absolute;right:28px;top:50%;margin-top:-22px;white-space:nowrap}
+    @media(max-width:1100px){header .acq-open{position:static;margin-top:16px}}
+    /* ---- Photo Gallery: album cards -> photo grid -> viewer ---- */
+    #acq{position:fixed;inset:0;z-index:9999;display:none;overflow:auto;background:radial-gradient(90% 60% at 50% 0%,#f7f8fc,#eceff6 70%);color:#1d2433;font-family:Roboto,"Segoe UI",Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    #acq.open{display:block;animation:acqIn .35s ease}
+    @keyframes acqIn{from{opacity:0}to{opacity:1}}
+    .acq-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:22px 32px 0}
+    .acq-head h1{margin:0;font-size:18px;font-weight:700;line-height:1.2}
+    .acq-crumb{margin-top:5px;font-size:9px;font-weight:700;letter-spacing:.04em;color:#3b7ddd;display:flex;align-items:center;flex-wrap:wrap;gap:7px;text-transform:uppercase}
+    .acq-crumb button{all:unset;cursor:pointer;color:#3b7ddd}
+    .acq-crumb button:hover{text-decoration:underline}
+    .acq-crumb i{font-style:normal;color:#6b7686;font-size:11px}
+    .acq-crumb b{color:#5b6577;font-weight:700}
+    .acq-close{white-space:nowrap;flex:none;border:1px solid #cdd4e1;background:#fff;color:#2f3a4d;border-radius:999px;padding:8px 18px;font:500 12px Roboto,"Segoe UI",Arial,sans-serif;cursor:pointer;box-shadow:0 2px 6px rgba(30,45,90,.08);transition:background .2s,border-color .2s,transform .2s}
+    .acq-close:hover{background:#f6f8fc;border-color:#9aa8c2;transform:translateY(-1px)}
+    .acq-page{max-width:1240px;margin:0 auto;padding:26px 32px 72px}
+    .acq-page h2{margin:0;text-align:center;font-size:28px;font-weight:600;letter-spacing:-.01em}
+    .acq-page>p{margin:10px auto 0;max-width:620px;text-align:center;font-size:13px;line-height:1.55;color:#6f7889}
+    /* gallery header — CCS seal (left) and ISUFST logo (right) flank the title */
+    .acq-hero{display:flex;align-items:center;justify-content:center;gap:30px}
+    .acq-hero-text{flex:1 1 auto;min-width:0;max-width:640px}
+    .acq-hero-text h2{margin:0;text-align:center;font-size:28px;font-weight:600;letter-spacing:-.01em}
+    .acq-hero-text p{margin:10px auto 0;text-align:center;font-size:13px;line-height:1.55;color:#6f7889}
+    .acq-logo{flex:none;display:block;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 6px 10px rgba(30,45,90,.28)) drop-shadow(0 1px 2px rgba(30,45,90,.25))}
+    .acq-logo.l{width:112px;height:112px}
+    .acq-logo.r{height:96px;width:auto}
+    .acq-view{margin-top:30px;animation:acqIn .4s ease}
+
+    /* album cards — every cover sits in the navy floral frame */
+    :root{--af-ar:1.3733;--af-l:10.2%;--af-t:9.5%}
+    .acq-albums{display:flex;flex-wrap:wrap;justify-content:center;gap:34px 26px;max-width:1200px;margin-left:auto;margin-right:auto}
+    .acq-album{all:unset;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;width:380px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+    .acq-day-row{flex:0 0 100%;display:flex;justify-content:center;margin:18px 0 4px}
+    .acq-day{position:relative;margin:0;padding:12px 64px;text-align:center;text-transform:uppercase;font:700 16px Roboto,Arial,sans-serif;letter-spacing:.22em;color:#fbe6ad;text-shadow:0 2px 4px rgba(0,0,0,.45);
+      border:3px solid transparent;border-radius:999px;
+      background:linear-gradient(135deg,#123a8c 0%,#0b3d91 50%,#081f4f 100%) padding-box,linear-gradient(135deg,#fbe6ad 0%,#cba135 50%,#8f6a1a 100%) border-box;
+      box-shadow:0 0 0 2px #eceff6,0 0 0 4px #cba135,0 10px 20px rgba(11,61,145,.32),inset 0 1px 2px rgba(255,255,255,.3),inset 0 -3px 6px rgba(0,0,0,.35)}
+    .acq-day::before,.acq-day::after{content:"\2726";position:absolute;top:50%;transform:translateY(-50%);font-size:15px;color:#e9c46a;letter-spacing:0;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+    .acq-day::before{left:26px}.acq-day::after{right:26px}
+    @media(max-width:600px){.acq-day{padding:10px 40px;font-size:13px;letter-spacing:.14em}.acq-day::before{left:16px}.acq-day::after{right:16px}}
+    .acq-album:focus-visible{outline:2px solid #3b7ddd;outline-offset:6px;border-radius:12px}
+    .acq-cover{position:relative;flex:none;width:100%;aspect-ratio:var(--af-ar);
+      filter:drop-shadow(0 12px 12px rgba(25,30,60,.24)) drop-shadow(0 2px 3px rgba(25,30,60,.28));
+      transform:translateZ(0);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+    .acq-album:hover .acq-cover,.acq-album:focus-visible .acq-cover{transform:translateY(-8px) scale(1.02)}
+    .acq-cover .ph{left:var(--af-l);right:var(--af-l);top:var(--af-t);bottom:var(--af-t);background:#111;
+      box-shadow:0 0 0 2px #fbfaf7,0 0 0 3px rgba(40,44,70,.45)}
+    .acq-cover .ph img{width:100%;height:100%;object-fit:cover;display:block;image-rendering:auto;backface-visibility:hidden;transform:scale(1.001);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+    .acq-album:hover .acq-cover .ph img,.acq-album:focus-visible .acq-cover .ph img{transform:scale(1.07)}
+    /* depth: soft inner shadow under the frame plus a faint glass sheen */
+    .acq-cover .ph::after{content:"";position:absolute;inset:0;pointer-events:none;
+      box-shadow:inset 0 0 10px 1px rgba(10,12,30,.45),inset 0 2px 5px rgba(0,0,0,.30);
+      background:linear-gradient(115deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 30%)}
+    .afr-top{position:absolute;inset:0;background:url("frames/album-frame.png") center/100% 100% no-repeat;pointer-events:none;z-index:2}
+    .acq-cover .cnt{position:absolute;left:50%;bottom:7px;transform:translateX(-50%);z-index:1;white-space:nowrap;background:rgba(22,32,52,.86);color:#fff;font:700 10.5px Roboto,Arial,sans-serif;padding:4px 11px;border-radius:99px;backdrop-filter:blur(6px);box-shadow:0 2px 8px rgba(0,0,0,.35)}
+        .acq-album h4{margin:12px 10px 3px;font-size:15px;font-weight:700;line-height:1.3;color:#111827;text-align:center}
+    .acq-album small{display:block;margin:0 10px;font:700 12px Roboto,Arial,sans-serif;color:#4a5a80;text-align:center}
+
+    /* photo grid — every photo sits in the gold frame, with the College logo on the top shell */
+    :root{--fr-ar:1.4307;--fr-l:14%;--fr-t:18.5%;--fr-r:14.3%;--fr-b:19.2%;--fr-cx:50%;--fr-cy:8%;--fr-logo:10.5%}
+    .acq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 26px}
+    .acq-item{position:relative;display:block;width:100%;aspect-ratio:var(--fr-ar);padding:0;border:0;background:none;cursor:pointer;border-radius:0;filter:drop-shadow(0 14px 16px rgba(60,40,5,.30)) drop-shadow(0 2px 3px rgba(60,40,5,.25));transition:transform .4s cubic-bezier(.2,.7,.2,1),filter .4s}
+    .acq-item:hover{transform:translateY(-5px) scale(1.015);filter:drop-shadow(0 22px 24px rgba(60,40,5,.38)) drop-shadow(0 3px 4px rgba(60,40,5,.28))}
+    .acq-item:focus-visible{outline:2px solid #3b7ddd;outline-offset:4px}
+    .ph{position:absolute;left:var(--fr-l);top:var(--fr-t);right:var(--fr-r);bottom:var(--fr-b);overflow:hidden;background:#000}
+    .acq-item .ph img,.acq-item .ph video{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s ease,transform .7s cubic-bezier(.2,.7,.2,1);image-rendering:auto;backface-visibility:hidden}
+    .acq-item .ph img.ld,.acq-item .ph video.ld{opacity:1}
+    .acq-item:hover .ph img,.acq-item:hover .ph video{transform:scale(1.05)}
+    .fr-top{position:absolute;inset:0;background:url("frames/ornate-gold-frame.png") center/100% 100% no-repeat;pointer-events:none;z-index:2}
+    .fr-logo{position:absolute;z-index:3;left:var(--fr-cx);top:var(--fr-cy);width:var(--fr-logo);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:url("logos/gallery-badge.png") center/cover no-repeat;box-shadow:0 0 0 2px #e9c46a,0 0 0 3.5px #8a5a10,0 4px 10px rgba(0,0,0,.45);pointer-events:none}
+    .acq-item .vid{position:absolute;right:calc(var(--fr-r) + 8px);bottom:calc(var(--fr-b) + 8px);z-index:1;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.62);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;padding-left:2px}
+    .acq-msg{grid-column:1/-1;text-align:center;padding:60px 10px;color:#7b8494;font-size:14px;line-height:1.6}
+    @media(max-width:1000px){.acq-grid{grid-template-columns:repeat(2,1fr);gap:18px}}
+    @media(max-width:600px){.acq-grid{grid-template-columns:1fr;gap:14px}.acq-page{padding:20px 14px 48px}.acq-head{padding:18px 14px 0}.acq-albums{gap:26px}.acq-album{width:min(100%,400px)}.acq-page h2,.acq-hero-text h2{font-size:21px}.acq-hero{gap:12px;flex-wrap:wrap;justify-content:space-between}.acq-hero-text{order:3;flex:1 1 100%;max-width:none}.acq-hero-text p{font-size:12px}.acq-logo.l{width:72px;height:72px}.acq-logo.r{height:58px}}
+    @media(max-width:420px){.acq-album{width:100%}}
+
+    /* viewer — the opened photo is shown inside the same frame, big */
+    .acq-lb{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:radial-gradient(90% 80% at 50% 40%,rgba(30,34,48,.96),rgba(6,8,14,.98));backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+    .acq-lb.on{opacity:1;visibility:visible}
+    .acq-stage{position:absolute;inset:14px 74px 58px;display:flex;align-items:center;justify-content:center}
+    .acq-fr{position:relative;aspect-ratio:var(--fr-ar);width:min(100%,calc((100vh - 84px) * 1.4307));filter:drop-shadow(0 24px 40px rgba(0,0,0,.65));animation:acqPop .5s cubic-bezier(.2,.7,.2,1)}
+    @keyframes acqPop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+    .acq-fr .ph img,.acq-fr .ph video{width:100%;height:100%;object-fit:contain;display:block;cursor:pointer;image-rendering:auto}
+    .acq-lbtn{position:absolute;z-index:2;border:0;background:rgba(255,255,255,.12);color:#fff;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:background .2s,transform .2s}
+    .acq-lbtn:hover{background:rgba(255,255,255,.26);transform:scale(1.06)}
+    .acq-lbtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+    .acq-lbtn.x{top:12px;right:14px}.acq-lbtn.p{left:14px;top:50%;margin-top:-22px}.acq-lbtn.n{right:14px;top:50%;margin-top:-22px}
+    .acq-lbar{position:absolute;left:0;right:0;bottom:14px;z-index:2;display:flex;align-items:center;justify-content:center;gap:14px;color:#d6dbe6;font-size:12px}
+    .acq-play{border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:999px;padding:6px 14px;font:500 12px Roboto,"Segoe UI",Arial,sans-serif;cursor:pointer;transition:background .2s}
+    .acq-play.on{background:#12a865;border-color:#12a865}
+    @media(max-width:700px){.acq-stage{inset:56px 4px 64px}.acq-fr{width:min(100%,calc((100vh - 130px) * 1.4307))}.acq-lbtn.p{left:6px}.acq-lbtn.n{right:6px}}
+    @media(prefers-reduced-motion:reduce){#acq.open,.acq-view,.acq-fr{animation:none}.acq-album,.acq-item,.acq-cover,.acq-cover img,.acq-item .ph img,.acq-item .ph video{transition:none}}
+  </style>
+</head>
+<body>
+
+  <div class="brand-banner"></div>
+
+  <header>
+    <h1>Meet the Campus Leadership</h1>
+    <p>Iloilo State University of Fisheries Science and Technology (ISUFST) &mdash; San Enrique Campus</p>
+    <button class="acq-open" id="acqOpenBtn">Click Acquaintance</button>
+  </header>
+
+  <div class="section-gap"></div>
+
+  <!-- =========================================================
+       UNIVERSITY LEVEL
+       ========================================================= -->
+  <section class="transparent">
+    <h2>University Level</h2>
+    <div class="officials-grid">
+
+      <div class="card">
+        <div class="photo-frame">
+          <img src="7.png" alt="[Full Name] - University President">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[Nordy D. Siason Jr, EDD, Ceso VI]</h3>
+        <p>University President</p>
+      </div>
+
+    </div>
+  </section>
+
+  <img src="images/gold-divider.png" alt="" class="gold-divider">
+
+  <!-- =========================================================
+       CAMPUS LEVEL
+       ========================================================= -->
+  <section>
+    <h2>Campus Level</h2>
+    <div class="officials-grid">
+
+      <div class="card">
+        <div class="photo-frame">
+          <img src="4.png" alt="[DR. Michael B. Dizon] - Campus Administrator">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>DR. Michael B. Dizon</h3>
+        <p>Campus Administrator</p>
+      </div>
+
+      <div class="card">
+        <div class="photo-frame">
+          <img src="12.png" alt="[ Mrs. Melby P. Parreño] - Administrative Officer">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[ Mrs. Melby P. Parreño]</h3>
+        <p>Administrative Officer</p>
+      </div>
+
+    </div>
+  </section>
+
+  <img src="images/gold-divider.png" alt="" class="gold-divider">
+
+  <!-- =========================================================
+       DEPARTMENT LEVEL - DEANS
+       ========================================================= -->
+  <section>
+    <h2>Department Level &mdash; Deans</h2>
+    <p class="note">department dean below (CCS, HM, AG, BSOA, EDU.)</p>
+    <div class="officials-grid">
+
+      <div class="card">
+        <div class="photo-frame">
+          <img src="6.png" alt="[Dr. Wenda D. Panes] - Dean, College of Computer Studies">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[Dr. Wenda D. Panes]</h3>
+        <p>Dean, College of Informatics & Computer Innovation (CICI)</p>
+      </div>
+
+      <div class="card">
+        <div class="photo-frame">
+          <img src="9.png" alt="[DR. NOLI L. GERONA] - Dean, Agreculture">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[DR. Noli L. Gerona]</h3>
+        <p>Dean, Agreculture [AG]</p>
+      </div>
+
+          <div class="card">
+        <div class="photo-frame">
+          <img src="11.png" alt="[Full Name] - Dean, Office Administration">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[DR.Janice H. Ching]]</h3>
+        <p>Dean, Office Administration [BSOA]</p> <br> <p>-----AND------</p> <br>
+         <p>college of Business, management [HM]</p>
+      </div>
+
+          <div class="card">
+        <div class="photo-frame">
+          <img src="10.png" alt="[Dr. Rene T. Estomo] - Dean, Education">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[Dr. Rene T. Estomo]</h3>
+        <p>Dean, Education [EDU]</p>
+      </div>
+
+    </div>
+  </section>
+
+  <img src="images/gold-divider.png" alt="" class="gold-divider">
+
+
+  <!--CCS FACULTY AND STAFF-->
+  <section>
+    <h2>CICI Faculty Members and Staff</h2>
+    <div class="officials-grid">
+
+        <div class="card">
+        <div class="photo-frame">
+          <img src="5.png" alt="[Instr. Dave Allan Tagacay] - Instructor, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[INSTR. Dave Allan Tagacay]</h3>
+        <p>Instructor, College of Informatics & Computer Innovation</p>
+      </div>
+
+      <div class="card">
+        <div class="photo-frame">
+          <img src="6.png" alt="[Dr. Wenda D. Panes] - Faculty, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[Dr. Wenda D. Panes]</h3>
+        <p>Dean/Faculty, College of Informatics & Computer Innovation</p>
+      </div>
+
+      <div class="card">
+        <div class="photo-frame">
+          <img src="1.png" alt="[Dr. Weena J. Bulnes] - Faculty, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div> 
+        <h3>[Dr. Weena J. Bulnes]</h3>
+        <p>Faculty, College of Computer Studies</p>
+      </div>
+
+        <div class="card">
+        <div class="photo-frame">
+          <img src="3.png" alt="[Dr. Dythne P. Dacudao] - Faculty, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[Dr. Dythne P. Dacudao]</h3>
+        <p>Faculty, College of Informatics & Computer Innovation</p>
+      </div>
+
+        <div class="card">
+        <div class="photo-frame">
+          <img src="2.png" alt="[Dr. Ian Sugatan] - Faculty, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[Dr. Ian Sugatan]</h3>
+        <p>Faculty, College of Informatics & Computer Innovation</p>
+      </div>
+
+       <div class="card">
+        <div class="photo-frame">
+          <img src="8.png" alt="[Dr. ANALIZA G. ALINGALAN] - Faculty, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[DR. ANALIZA G. ALINGALAN]</h3>
+        <p>Faculty, College of Informatics & Computer Innovation</p>
+      </div>
+
+        <div class="card">
+        <div class="photo-frame">
+          <img src="15.png" alt="[INSTR. DR. IVAN SELVESTRE] - Faculty, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[INSTR. IVAN SELVESTRE]</h3>
+        <p>Instructor, College of Informatics & Computer Innovation</p>
+      </div>
+
+         <div class="card">
+        <div class="photo-frame">
+          <img src="13.png" alt="[ANDREA P. DELOS SANTOS] - Staff, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[ANDREA P. DELOS SANTOS]</h3>
+        <p>Staff, College of Informatics & Computer Innovation</p>
+      </div>
+
+         <div class="card">
+        <div class="photo-frame">
+          <img src="14.png" alt="[JAY MICHAEL O. BORCILLO] - Staff, CICI">
+          <div class="sheen"></div>
+          <div class="gold-ribbon"></div>
+        </div>
+        <h3>[JAY MICHAEL O. BORCILLO]</h3>
+        <p>staff, College of Informatics & Computer Innovation</p>
+      </div>
+
+      <!-- Duplicate a .card block above for each additional faculty/staff member -->
+
+    </div>
+  </section>
+
+  <div class="brand-footer-strip"></div>
+  <footer>
+    <p>ITPE3 &ndash; Web Systems Technologies | Laboratory Exercise No. 1 | AY 2026-2027</p>
+  </footer>
+
+
+  <!-- ================= ACQUAINTANCE (added) ================= -->
+  <div id="acq" role="dialog" aria-label="Photo Gallery">
+    <div class="acq-head">
+      <div>
+        <h1>Welcome To Gallery</h1>
+        <div class="acq-crumb" id="acqCrumb"></div>
+      </div>
+      <button class="acq-close" id="acqBack" type="button">&larr; Back to site</button>
+    </div>
+
+    <div class="acq-page">
+      <div class="acq-hero">
+        <img class="acq-logo l" src="logos/ccs-seal.png" alt="College of Computer Studies &ndash; ISUFST SEC seal" decoding="async">
+        <div class="acq-hero-text">
+          <h2 id="acqTitle">Photo Gallery</h2>
+          <p id="acqSub">Choose an album to relive the moments &mdash; photos and videos from ISUFST San Enrique Campus events.</p>
+        </div>
+        <img class="acq-logo r" src="logos/isufst-logo.png" alt="ISUFST logo" decoding="async">
+      </div>
+      <div class="acq-view acq-albums" id="acqAlbums"></div>
+      <div class="acq-view acq-grid" id="acqGrid" style="display:none"></div>
+    </div>
+
+    <div class="acq-lb" id="acqLb" role="dialog" aria-label="Photo viewer">
+      <button class="acq-lbtn x" id="acqX" type="button" aria-label="Close">&#10005;</button>
+      <button class="acq-lbtn p" id="acqP" type="button" aria-label="Previous">&#10094;</button>
+      <button class="acq-lbtn n" id="acqN" type="button" aria-label="Next">&#10095;</button>
+      <div class="acq-stage" id="acqSlot"></div>
+      <div class="acq-lbar"><span id="acqCount"></span><button class="acq-play" id="acqAuto" type="button">&#9654; Auto play</button></div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    /* =====================================================================
+       ALBUMS — each album points to a FOLDER inside  gallery/
+       Every photo (.jpg .png .webp ...) and video (.mp4 .webm ...) you put
+       in that folder shows up in the album automatically (natural name order).
+       To add another album: make gallery/<folder-name>/ and copy one line.
+       ===================================================================== */
+    var ALBUMS=[
+      {title:'Opening Program',          sub:'CICI Aquaintance 2026', cover:'covers/4.jpg', folder:'opening-program'},
+      {title:'Street Dancing & Field Demonstration', sub:'CICI Aquaintance 2026', cover:'covers/3.jpg', folder:'street-dancing'},
+      {title:'Fun Day',                  sub:'CICI Aquaintance 2026', cover:'covers/5.jpg', folder:'fun-day'},
+      {label:'DAY 2 EVENT'},
+      {title:'Mr. and Ms. ', sub:'CICI Aquaintance 2026', cover:'covers/6.png', folder:'mr-and-ms'},
+      {title:'Winners \uD83C\uDFC6',  sub:'CICI Aquaintance 2026', cover:'covers/2.jpg',        folder:'winners'},
+      {title:'street wear & IT talent', sub:'CICI Aquaintance 2026', cover:'covers/1.jpg',        folder:'street-wear'}
+    ];
+    var HOME_SUB='Choose an album to relive the moments \u2014 photos and videos from ISUFST San Enrique Campus events.';
+
+    var $=function(i){return document.getElementById(i)},acq=$('acq'),level='albums',cur=-1,view=[],idx=0,timer,playing=false,lbOpen=false;
+    var isVid=function(p){return /\.(mp4|webm|ogg|mov|m4v)(\?.*)?$/i.test(p)};
+    var esc=function(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')};
+    var FILE=/\.(jpe?g|png|webp|gif|avif|mp4|webm|mov|m4v)$/i,nat=function(a,b){return a.localeCompare(b,undefined,{numeric:true,sensitivity:'base'})};
+
+    function badge(a){var v=a.media.filter(isVid).length,p=a.media.length-v;
+      return p+' photo'+(p===1?'':'s')+(v?' \u00B7 '+v+' video'+(v===1?'':'s'):'')}
+
+    /* read what is inside gallery/<folder>/ — tries 3 ways so it runs on any setup:
+         1) gallery.php  (PHP hosting: XAMPP, InfinityFree ...)   2) the server's folder listing
+         3) gallery/manifest.js (made by update-gallery.bat — works even when index.html is opened by double-click) */
+    function fromPHP(f){return fetch('gallery.php?f='+encodeURIComponent(f),{cache:'no-store'})
+      .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){return [].concat(j.files||[])}).catch(function(){return []})}
+    function fromListing(base){return fetch(base,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+      var out=[],re=/href="([^"?#]+)"/gi,m;
+      while((m=re.exec(t))){var seg=m[1].split('/').pop();try{seg=decodeURIComponent(seg)}catch(e){}if(FILE.test(seg))out.push(seg)}
+      return out}).catch(function(){return []})}
+    function fromManifest(f){return new Promise(function(res){
+      if(window.CAMPUSMEET_GALLERY)return res([].concat(window.CAMPUSMEET_GALLERY[f]||[]));
+      var sc=document.createElement('script');sc.src='gallery/manifest.js?'+Date.now();
+      sc.onload=function(){res([].concat((window.CAMPUSMEET_GALLERY||{})[f]||[]))};sc.onerror=function(){res([])};document.head.appendChild(sc)})}
+    function list(folder){var base='gallery/'+encodeURIComponent(folder)+'/';
+      return fromPHP(folder).then(function(l){return l.length?l:fromListing(base)})
+        .then(function(l){return l.length?l:fromManifest(folder)})
+        .then(function(l){return l.filter(function(n){return FILE.test(n)}).sort(nat).map(function(n){return base+encodeURIComponent(n)})})}
+
+    /* ---------- breadcrumb + header ---------- */
+    function crumb(){var c=$('acqCrumb');
+      c.innerHTML='<button type="button" id="acqCPages">Pages</button><i>&rarr;</i>'+(level==='album'?'<button type="button" id="acqCGal">Gallery</button><i>&rarr;</i><b>'+esc(ALBUMS[cur].title)+'</b>':'<b>Gallery</b>');
+      $('acqCPages').onclick=closeAll;var g=$('acqCGal');if(g)g.onclick=showAlbums;
+      $('acqBack').innerHTML=level==='album'?'&larr; All albums':'&larr; Back to site'}
+
+    /* ---------- album cards ---------- */
+    function showAlbums(){closeLb();level='albums';cur=-1;
+      $('acqTitle').textContent='Photo Gallery';$('acqSub').textContent=HOME_SUB;
+      $('acqGrid').style.display='none';var box=$('acqAlbums');box.style.display='';box.innerHTML='';
+      ALBUMS.forEach(function(a,i){if(a.label){var r=document.createElement('div');r.className='acq-day-row';var p=document.createElement('p');p.className='acq-day';p.textContent=a.label;r.appendChild(p);box.appendChild(r);return}
+        var d=document.createElement('button');d.type='button';d.className='acq-album';
+        d.innerHTML='<div class="acq-cover"><span class="ph"><img src="'+esc(a.cover)+'" alt="" decoding="async"><b class="cnt">&hellip;</b></span><i class="afr-top"></i></div><h4>'+esc(a.title)+'</h4><small>'+esc(a.sub)+'</small>';
+        d.onclick=function(){openAlbum(i)};box.appendChild(d);
+        if(!a.ready)a.ready=list(a.folder).then(function(l){a.media=l});
+        a.ready.then(function(){d.querySelector('.cnt').textContent=badge(a)})});
+      crumb();acq.scrollTop=0}
+
+    /* ---------- photos of one album ---------- */
+    function openAlbum(i){var a=ALBUMS[i];(a.ready||Promise.resolve()).then(function(){
+      level='album';cur=i;view=a.media.slice();
+      $('acqTitle').textContent=a.title;$('acqSub').textContent=a.sub+' \u00B7 '+badge(a);
+      $('acqAlbums').style.display='none';var g=$('acqGrid');g.style.display='';g.innerHTML='';
+      if(!view.length){g.innerHTML='<div class="acq-msg">No photos or videos in this album yet.<br>Add files to <b>gallery/'+esc(a.folder)+'/</b>, then run <b>update-gallery.bat</b>.</div>'}
+      view.forEach(function(src,k){var b=document.createElement('button');b.type='button';b.className='acq-item';b.setAttribute('aria-label','Open item '+(k+1)+' of '+view.length);
+        b.innerHTML='<span class="ph">'+(isVid(src)?'<video src="'+esc(src)+'#t=0.5" preload="metadata" muted></video>':'<img src="'+esc(src)+'" alt="'+esc(a.title)+'" loading="lazy" decoding="async">')+'</span><i class="fr-top"></i><i class="fr-logo"></i>'+(isVid(src)?'<span class="vid">&#9654;</span>':'');
+        var m=b.querySelector('img,video');m.addEventListener(isVid(src)?'loadeddata':'load',function(){m.classList.add('ld')});if(m.complete&&!isVid(src))m.classList.add('ld');
+        b.onclick=function(){openLb(k)};g.appendChild(b)});
+      crumb();acq.scrollTop=0})}
+
+    /* ---------- photo viewer ---------- */
+    function showLb(){clearTimeout(timer);var slot=$('acqSlot'),src=view[idx],el;slot.innerHTML='';
+      if(isVid(src)){el=document.createElement('video');el.src=src;el.controls=true;el.autoplay=true;el.playsInline=true;el.onended=function(){if(playing)step(1)}}
+      else{el=document.createElement('img');el.src=src;el.alt='';el.decoding='async';el.title='Click for next';el.onclick=function(){step(1)}}
+      var fr=document.createElement('div');fr.className='acq-fr';
+      var ph=document.createElement('div');ph.className='ph';ph.appendChild(el);fr.appendChild(ph);
+      fr.insertAdjacentHTML('beforeend','<i class="fr-top"></i><i class="fr-logo"></i>');
+      slot.appendChild(fr);$('acqCount').textContent=(idx+1)+' / '+view.length;
+      var multi=view.length>1;$('acqP').style.display=$('acqN').style.display=$('acqAuto').style.display=multi?'flex':'none';
+      schedule()}
+    /* auto next: photos advance every 4 s, videos advance when they finish */
+    function schedule(){clearTimeout(timer);if(playing&&view.length>1&&!isVid(view[idx]))timer=setTimeout(function(){step(1)},4000)}
+    function setAuto(){var b=$('acqAuto');b.classList.toggle('on',playing);b.innerHTML=playing?'&#10074;&#10074; Pause':'&#9654; Auto play'}
+    function step(d){if(view.length>1){idx=(idx+view.length+d)%view.length;showLb()}}
+    function openLb(k){idx=k;lbOpen=true;$('acqLb').classList.add('on');showLb()}
+    function closeLb(){lbOpen=false;playing=false;setAuto();clearTimeout(timer);$('acqSlot').innerHTML='';$('acqLb').classList.remove('on')}
+    function closeAll(){closeLb();acq.classList.remove('open');document.body.style.overflow=''}
+    function back(){if(lbOpen)closeLb();else if(level==='album')showAlbums();else closeAll()}
+
+    $('acqOpenBtn').onclick=function(){acq.classList.add('open');document.body.style.overflow='hidden';showAlbums()};
+    $('acqBack').onclick=function(){if(level==='album')showAlbums();else closeAll()};
+    $('acqX').onclick=closeLb;$('acqP').onclick=function(){step(-1)};$('acqN').onclick=function(){step(1)};
+    $('acqAuto').onclick=function(){playing=!playing;setAuto();schedule()};
+    $('acqLb').addEventListener('click',function(e){if(e.target===this||e.target===$('acqSlot'))closeLb()});
+    document.addEventListener('keydown',function(e){if(!acq.classList.contains('open'))return;
+      if(e.key==='Escape'&&!document.fullscreenElement)back();
+      if(lbOpen){if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)}});
+  })();
+  </script>
+
+</body>
+</html>
